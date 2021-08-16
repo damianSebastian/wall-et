@@ -1,37 +1,29 @@
 import React, { useState } from 'react';
-import { StyleSheet, View } from 'react-native';
-import AppIconButtons from '../component/AppIconButtons';
-import MyButton from '../component/MyButton';
+import { StyleSheet, View} from 'react-native';
+
 import Screen from '../component/Screen';
 import AppText from '../component/AppText';
 import defaultProps from '../config/defaultProps';
 
+import AddMoney from '../component/AddMoney';
+import TakeMoney from '../component/TakeMoney';
+
 function MainScreen() {
-    const [money, setMoney] = useState(0);
-
-
+    const [allValues, setAllValues] = useState({
+        money: 100,
+        category:"",
+    });
     return (
         <Screen>
             <View style={styles.buttons}>
-                <View style={styles.addButton}>
-                    <AppIconButtons iconName="credit-card-plus-outline"
-                        onPress={() => setMoney(money + 100)}
-                        size={66}
-                    />
-                    <AppText text="Add money" style={defaultProps.mainText} />
-
-                </View>
-                <View style={styles.takeButton}>
-                    <AppIconButtons iconName="credit-card-minus-outline"
-                        onPress={() => setMoney(money - 100)}
-                        size={66}
-                    />
-                    <AppText text="Take money" style={defaultProps.mainText} />
-                </View>
+                <AddMoney 
+                onInputMoney={(input) => setAllValues({ ...allValues, money: allValues.money + parseInt(input)})}/>
+                <TakeMoney selectedItem={allValues.category} 
+                onSelectItem={(item) => setAllValues({ ...allValues, category: item})}
+                onMoneySpend={(amount) => setAllValues({ ...allValues, money: allValues.money - parseInt(amount)})} />
             </View>
             <View style={styles.balance}>
-                <AppText text={money + " RON"} style={styles.balanceText} />
-
+                <AppText text={allValues.money + " RON"} style={styles.balanceText} />
             </View>
         </Screen>
     )
@@ -40,14 +32,7 @@ function MainScreen() {
 export default MainScreen;
 
 const styles = StyleSheet.create({
-    addButton: {
-        justifyContent: 'center',
-        alignItems: 'center',
-    },
-    takeButton: {
-        justifyContent: 'center',
-        alignItems: 'center',
-    },
+
     buttons: {
         backgroundColor: defaultProps.colors.firstBackground,
         elevation: 10,
@@ -70,5 +55,6 @@ const styles = StyleSheet.create({
         margin: 17,
         height: 70,
         borderRadius: 15,
-    }
+    },
+
 })
