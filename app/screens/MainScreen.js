@@ -7,24 +7,33 @@ import defaultProps from '../config/defaultProps';
 
 import AddMoney from '../component/AddMoney';
 import TakeMoney from '../component/TakeMoney';
+import MyButton from '../component/MyButton';
 
 function MainScreen() {
     const [allValues, setAllValues] = useState({
-        money: 100,
-        category:"",
+        money: 0,
+        category:'',
+        amount:0,
     });
+
+
     return (
         <Screen>
             <View style={styles.buttons}>
-                <AddMoney 
-                onInputMoney={(input) => setAllValues({ ...allValues, money: allValues.money + parseInt(input)})}/>
+
+                <AddMoney
+                // onSave={() => console.log("save presed")}
+                onInputMoney={(input) => setAllValues({ ...allValues, amount:parseInt(input), money: allValues.money + allValues.amount})}/>
                 <TakeMoney selectedItem={allValues.category} 
                 onSelectItem={(item) => setAllValues({ ...allValues, category: item})}
-                onMoneySpend={(amount) => setAllValues({ ...allValues, money: allValues.money - parseInt(amount)})} />
+                onMoneySpend={(amount) => setAllValues({ ...allValues,amount: parseInt(amount) ,money: allValues.money - allValues.amount})} />
             </View>
             <View style={styles.balance}>
                 <AppText text={allValues.money + " RON"} style={styles.balanceText} />
             </View>
+            {/* acest buton va afisa toate intrarile si iesirile */}
+            <MyButton title="History" onPress={ () => console.log("history pressed")}/>
+
         </Screen>
     )
 }

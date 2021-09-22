@@ -22,19 +22,28 @@ function AddMoney({onInputMoney}) {
                     <AppText text="Add money" style={defaultProps.mainText} />
 
             </View>
+
             <Modal visible={allValues.modalVisible}
              animationType= "fade" 
-             onRequestClose={() => setAllValues({ ...allValues, modalVisible: false})}>
-                <MyTextInput iconName= "credit-card-plus-outline" placeholder="Write here..." 
-                onChangeText={(amount) => setAllValues({ ...allValues, money: amount})}/>
-                <AppIconButtons iconName="credit-card-plus-outline"
-                        onPress={() => {
-                            onInputMoney(allValues.money);
-                            setAllValues({ ...allValues, modalVisible: false});
-                        }}
-                          
-                        size={55}
-                    />
+            //  onRequestClose={() => setAllValues({ ...allValues, modalVisible: false})}
+             >
+
+                 <View style={{alignItems: 'center'}}>
+
+                    <MyTextInput iconName= "credit-card-plus-outline" placeholder="Write here..."
+                    
+                    onChangeText={(amount) => setAllValues({ ...allValues, money: amount})}/>
+                    <AppIconButtons iconName="credit-card-plus-outline"
+                    
+                            onPress={() => {
+                                onInputMoney(allValues.money);
+
+                                setAllValues({ ...allValues, modalVisible: false});
+                            }}
+                            
+                            size={70}
+                        />
+                    </View>
             </Modal>
 
         </React.Fragment>       

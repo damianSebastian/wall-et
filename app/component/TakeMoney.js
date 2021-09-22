@@ -33,21 +33,23 @@ function TakeMoney({selectedItem, onSelectItem, onMoneySpend}) {
         <Modal visible={allValues.modalVisible} 
         animationType="slide" 
         onRequestClose={() => setAllValues({...allValues, modalVisible: false})} >
+            
+            <View style={{alignItems: 'center'}}>
+                <AppIconButtons iconName = "credit-card-minus-outline" 
+                onPress ={() => setAllValues({ ...allValues, secondModalVisible: true})}/>
+                <MyTextInput iconName= "credit-card-minus-outline" 
+                onChangeText={(amount) => setAllValues({ ...allValues, money : amount})}
+                placeholder={selectedItem ? selectedItem.label : "placeholder"}/>
 
-            <AppIconButtons iconName = "credit-card-minus-outline" 
-            onPress ={() => setAllValues({ ...allValues, secondModalVisible: true})}/>
-            <MyTextInput iconName= "credit-card-minus-outline" 
-            onChangeText={(amount) => setAllValues({ ...allValues, money : amount})}
-            placeholder={selectedItem ? selectedItem.label : "placeholder"}/>
-
-            <AppIconButtons iconName="credit-card-minus-outline"
-                    onPress={() => {
-                        onMoneySpend(allValues.money);
-                        setAllValues({ ...allValues, modalVisible: false});
-                    }}
-                    
-                    size={89}
-                />
+                <AppIconButtons iconName="credit-card-minus-outline"
+                        onPress={() => {
+                            onMoneySpend(allValues.money);
+                            setAllValues({ ...allValues, modalVisible: false});
+                        }}
+                        
+                        size={89}
+                    />
+            </View>
         </Modal>
 
         <Modal visible={allValues.secondModalVisible} 
