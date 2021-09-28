@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
 import { View, StyleSheet, Modal, FlatList, Alert} from 'react-native';
 
-import defaultProps from '../config/defaultProps';
+
 import MyTextInput from '../component/MyTextInput';
 import PickerComponent from '../component/PickerComponent';
 import AppIconButtons from '../component/AppIconButtons';
-import AppText from '../component/AppText';
 
 const categories = [
     { label : "Food", value:  1},

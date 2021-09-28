@@ -1,5 +1,6 @@
 import React from 'react';
-import {StyleSheet, FlatList, Text } from 'react-native';
+import {StyleSheet, FlatList} from 'react-native';
+import HistoryItem from '../component/HistoryItem';
 
 import MyButton from '../component/MyButton';
 import Screen from '../component/Screen';
@@ -12,14 +13,15 @@ function History({route, navigation}) {
     
   return (
     <Screen style={styles.container}>
-
-        <MyButton title="Menu" 
-        onPress={() => navigation.navigate("Main")}/>
         <FlatList
             data={data}
             keyExtractor={(item) => item.index.toString()}
             renderItem={({item}) =>
-            <Text style={defaultProps.mainText}> Text aici {item.category} time: {item.time}</Text>}
+            <HistoryItem
+            category = {item.category}
+            totalAmount = {item.money}
+            amount = {item.amount}
+            time = {item.time}/>}
             />
     </Screen>
   );

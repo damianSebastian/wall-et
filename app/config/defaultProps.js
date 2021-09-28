@@ -5,7 +5,7 @@ import colors from './colors';
 export default {
     colors,
     mainText: {
-        margin: 5,
+        margin: 3,
         color: colors.text,
         ...Platform.select({
             ios: {
@@ -21,7 +21,7 @@ export default {
 
     },
     descriptionText: {
-        margin: 5,
+        margin: 1,
         color: colors.gray,
         ...Platform.select({
             ios: {
@@ -48,7 +48,7 @@ export default {
                 fontFamily: "Roboto",
             }
         }),
-        margin: 10,
+        margin: 7,
         fontWeight: 'bold',
     }
 }
