@@ -1,20 +1,18 @@
 import React from 'react';
-import {StyleSheet, View} from 'react-native';
+import {StyleSheet, TouchableOpacity } from 'react-native';
 
 import defaultProps from '../config/defaultProps';
-import AppIconButtons from './AppIconButtons';
 import AppText from './AppText';
+import ListSeparator from './ListSeparator';
 
 function PickerComponent({label, onPress}) {
     return (
-        <View style={styles.addButton}>
-            <AppIconButtons iconName="credit-card-minus-outline"
-                onPress={onPress}
-                size={55}
-            />
-            <AppText text={label} style={defaultProps.descriptionText} />
-
-        </View>
+        <TouchableOpacity
+        style={styles.addButton} onPress={onPress}>
+            
+            <AppText text={label} style={defaultProps.titletext} />
+            
+        </TouchableOpacity>
     );
 }
 

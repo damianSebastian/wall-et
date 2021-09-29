@@ -1,11 +1,9 @@
 import React from 'react';
 import {StyleSheet, FlatList} from 'react-native';
-import HistoryItem from '../component/HistoryItem';
 
-import MyButton from '../component/MyButton';
+import HistoryItem from '../component/HistoryItem';
 import Screen from '../component/Screen';
 import defaultProps from '../config/defaultProps';
-
 
 function History({route, navigation}) {
 

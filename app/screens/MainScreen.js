@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {Dimensions, StyleSheet, View} from 'react-native';
 
 import Screen from '../component/Screen';
@@ -28,32 +28,29 @@ function MainScreen({navigation, route}) {
         amount: amountTook,
         time: atTime});
     }
-    // setMoney(money + incomingData.money);
-    // addValue(money, incomingData.category, incomingData.money, new Date().toLocaleString());
+
 
     return (
         <Screen>
             <View style={styles.buttons}>
 
-                <MyButton title='Add money'
+                <MyButton title='Add '
                 onPress={() => navigation.navigate("AddMoney")}/>
-                <MyButton title="Take money"
+                <MyButton title="History" onPress={() => navigation.navigate("History", values)}/>
+                <MyButton title="Take"
                 onPress={() => navigation.navigate("TakeMoney")}/>
 
             </View>
 
-            <View style={styles.balance}>
-                <AppText text={money + " RON"} style={styles.balanceText} />
-            </View>
-
-            <MyButton title="History" onPress={() => navigation.navigate("History", values)}/>
-
             <MyButton title="Save" onPress={() => {
                 setMoney(money + incomingData.money);
-
                 addValue(money, incomingData.category, incomingData.money, new Date().toLocaleString());
 
             }}/>
+
+            <View style={styles.balance}>
+                <AppText text={money + " RON"} style={styles.balanceText} />
+            </View>
         </Screen>
     )
 
@@ -69,12 +66,13 @@ const styles = StyleSheet.create({
         borderRadius: 15,
         margin: 17,
         height: 140,
-        width: Dimensions.get("window").width - 20,
+        width: Dimensions.get("screen").width - 20,
         flexDirection: 'row-reverse',
         justifyContent: 'space-evenly',
+        alignItems: 'center',
     },
     balanceText: {
-        fontSize: 50,
+        fontSize: 60,
         fontFamily: "Roboto",
         color: defaultProps.colors.text,
     },
@@ -82,7 +80,7 @@ const styles = StyleSheet.create({
         backgroundColor: defaultProps.colors.firstBackground,
         justifyContent: 'center',
         alignItems: 'center',
-        minWidth: 200,
+        minWidth: 300,
         margin: 17,
         height: 70,
         borderRadius: 15,

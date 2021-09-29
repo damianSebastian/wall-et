@@ -48,7 +48,7 @@ export default {
                 fontFamily: "Roboto",
             }
         }),
-        margin: 7,
+        margin: 5,
         fontWeight: 'bold',
     }
 }

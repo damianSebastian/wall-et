@@ -12,8 +12,7 @@ const styles = StyleSheet.create({
         backgroundColor: defaultProps.colors.secondBackground,
         flex: 1,
         flexDirection: "column-reverse",
-        alignItems: 'center',
-
+        alignItems: 'center',      
     }
 })
 
