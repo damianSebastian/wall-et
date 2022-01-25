@@ -3,7 +3,6 @@ import {StyleSheet, TouchableOpacity } from 'react-native';
 
 import defaultProps from '../config/defaultProps';
 import AppText from './AppText';
-import ListSeparator from './ListSeparator';
 
 function PickerComponent({label, onPress}) {
     return (

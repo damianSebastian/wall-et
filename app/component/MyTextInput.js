@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, StyleSheet, TextInput, Dimensions } from 'react-native';
+import { View, StyleSheet, TextInput, Dimensions, KeyboardAvoidingView } from 'react-native';
 
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import defaultProps from '../config/defaultProps';
@@ -8,12 +8,18 @@ import defaultProps from '../config/defaultProps';
 function MyTextInput({iconName, placeholder, keyboard="number-pad", onChangeText}) {
     return (
         <View style={styles.container}>
-            <MaterialCommunityIcons name={iconName} size={30} color={defaultProps.colors.purple} style={styles.icon}/>
+            
+            <MaterialCommunityIcons name={iconName} size={30} color={defaultProps.colors.button} style={styles.icon}/>
             <TextInput placeholder={placeholder}           
             keyboardType={keyboard}
             style={[defaultProps.mainText]}
-            onChangeText= {onChangeText}          
+            onChangeText={onChangeText}
+            clearButtonMode = 'always' 
+            
+            
+            
             />
+            
         </View>
     );
 }

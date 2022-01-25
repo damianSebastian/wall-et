@@ -3,7 +3,7 @@ import { View, StyleSheet, Dimensions, Text } from 'react-native';
 import defaultProps from '../config/defaultProps';
 import ListSeparator from './ListSeparator';
 
-function HistoryItem({category, totalAmount, amount, time}) {
+function HistoryItem({category, totalAmount, amount, time, index}) {
   return (
     <View style={styles.container}>
         <View style = {styles.secondContainer}>
@@ -13,6 +13,7 @@ function HistoryItem({category, totalAmount, amount, time}) {
         </View>
         <View style = {styles.thirdContainer}>
             <Text style={defaultProps.titletext}>{totalAmount}</Text>
+            <Text style={defaultProps.descriptionText}>{index}</Text>
         </View>
         
     </View>
